@@ -2,6 +2,7 @@ import React from 'react';
 import faker from 'faker';
 import axios from 'axios';
 
+import Tonpei from '../tonpei.png';
 import CommentDetail from './CommentDetail';
 import ApprovalCard from './ApprovalCard';
 
@@ -30,9 +31,9 @@ class App extends React.Component {
           <ApprovalCard key={post.id}>
             <CommentDetail
               author="とんぺい"
-              date="10月8日 4:00PM"
+              date={`${faker.date.month()} 2019`}
               description={post.body}
-              avator={faker.image.avatar()}
+              avator={Tonpei}
             />
           </ApprovalCard>
         ))}
