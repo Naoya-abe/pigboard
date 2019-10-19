@@ -1,23 +1,17 @@
-//外部パッケージ
 import React from 'react';
 import faker from 'faker';
-import axios from 'axios';
-//component
 import CommentDetail from './CommentDetail';
 import ApprovalCard from './ApprovalCard';
-//style
 import '../styles/App.css';
-//写真
 import Tonpei from '../tonpei.png';
+import jsonplaceholder from '../api/jsonplaceholder';
 
 class App extends React.Component {
   state = {posts: []};
 
   getPosts = async () => {
     try {
-      const postsResponse = await axios.get(
-        'https://jsonplaceholder.typicode.com/posts'
-      );
+      const postsResponse = await jsonplaceholder.get('/posts');
       this.setState({posts: postsResponse.data});
     } catch {
       window.alert('投稿内容の取得に失敗しました。');
