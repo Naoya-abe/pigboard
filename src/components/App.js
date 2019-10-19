@@ -6,33 +6,35 @@ import CommentDetail from './CommentDetail';
 import ApprovalCard from './ApprovalCard';
 
 class App extends React.Component {
-  state = {user: [], posts: []};
-
-  getPosts = async () => {
-    try {
-      const postsResponse = await axios.get(
-        'https://jsonplaceholder.typicode.com/posts'
-      );
-      console.log(postsResponse.data);
-    } catch {
-      window.alert('投稿内容の取得に失敗しました。');
-    }
-  };
+  state = {users: [], posts: []};
 
   getUsers = async () => {
     try {
       const usersResponse = await axios.get(
         'https://jsonplaceholder.typicode.com/users'
       );
-      console.log(usersResponse.data);
+      this.setState({users: usersResponse.data});
+      console.log(this.state.users);
     } catch (error) {
       window.alert('ユーザの取得に失敗しました。');
     }
   };
 
+  getPosts = async () => {
+    try {
+      const postsResponse = await axios.get(
+        'https://jsonplaceholder.typicode.com/posts'
+      );
+      this.setState({posts: postsResponse.data});
+      console.log(this.state.posts);
+    } catch {
+      window.alert('投稿内容の取得に失敗しました。');
+    }
+  };
+
   componentDidMount() {
-    this.getPosts();
     this.getUsers();
+    this.getPosts();
   }
 
   render() {
