@@ -2,14 +2,11 @@
 import React from 'react';
 import faker from 'faker';
 import axios from 'axios';
-
 //component
 import CommentDetail from './CommentDetail';
 import ApprovalCard from './ApprovalCard';
-
 //style
 import '../styles/App.css';
-
 //写真
 import Tonpei from '../tonpei.png';
 
