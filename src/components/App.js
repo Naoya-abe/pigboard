@@ -1,12 +1,40 @@
 import React from 'react';
 import faker from 'faker';
+import axios from 'axios';
+
 import CommentDetail from './CommentDetail';
 import ApprovalCard from './ApprovalCard';
 
 class App extends React.Component {
+  state = {user: [], posts: []};
+
+  getPosts = async () => {
+    try {
+      const postsResponse = await axios.get(
+        'https://jsonplaceholder.typicode.com/posts'
+      );
+      console.log(postsResponse.data);
+    } catch {
+      window.alert('投稿内容の取得に失敗しました。');
+    }
+  };
+
+  getUsers = async () => {
+    try {
+      const usersResponse = await axios.get(
+        'https://jsonplaceholder.typicode.com/users'
+      );
+      console.log(usersResponse.data);
+    } catch (error) {
+      window.alert('ユーザの取得に失敗しました。');
+    }
+  };
+
   componentDidMount() {
-    console.log('componentDidMount');
+    this.getPosts();
+    this.getUsers();
   }
+
   render() {
     return (
       <div className="ui container comments" style={{marginTop: '14px'}}>
