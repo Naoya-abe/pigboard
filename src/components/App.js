@@ -14,7 +14,6 @@ class App extends React.Component {
         'https://jsonplaceholder.typicode.com/posts'
       );
       this.setState({posts: postsResponse.data});
-      console.log(this.state.posts);
     } catch {
       window.alert('投稿内容の取得に失敗しました。');
     }
@@ -27,14 +26,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container comments" style={{marginTop: '14px'}}>
-        <ApprovalCard>
-          <CommentDetail
-            author="とんぺい"
-            date="10月8日 4:00PM"
-            description="今日の昼ごはんは美味しかったブゥ！"
-            avator={faker.image.avatar()}
-          />
-        </ApprovalCard>
+        {this.state.posts.map(post => (
+          <ApprovalCard key={post.id}>
+            <CommentDetail
+              author="とんぺい"
+              date="10月8日 4:00PM"
+              description={post.body}
+              avator={faker.image.avatar()}
+            />
+          </ApprovalCard>
+        ))}
       </div>
     );
   }
