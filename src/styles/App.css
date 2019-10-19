@@ -1,0 +1,11 @@
+.ui.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ui.card {
+  max-width: 600px;
+  width: 90%;
+}

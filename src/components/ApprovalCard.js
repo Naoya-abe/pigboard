@@ -7,10 +7,10 @@ const ApprovalCard = props => {
       <div className="extra content">
         <div className="ui two buttons">
           <div className="ui button primary">
-            <i class="thumbs up icon"></i>
+            <i className="thumbs up icon"></i>
           </div>
           <div className="ui button red">
-            <i class="thumbs down icon"></i>
+            <i className="thumbs down icon"></i>
           </div>
         </div>
       </div>
